@@ -20,3 +20,13 @@ var names = [
 // Adding to the array
 names.append("Bar")
 names.append("Foo")
+
+// More examples
+let moreNames = [
+    "Foo",
+    "Bar"
+]
+
+var copy = moreNames
+copy.append("Baz")
+
