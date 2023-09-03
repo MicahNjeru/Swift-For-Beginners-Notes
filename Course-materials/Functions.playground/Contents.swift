@@ -34,9 +34,44 @@ let customAdded = customAdd(value1: 10, value2: 20)
 
 
 // A function can have a non-labeled internal/external argument
-// Func without external labels
+// Func without external argument labels
 func customMinus (_ lhs: Int, _ rhs: Int) -> Int {
     lhs - rhs
 }
 
 let customSubtracted = customMinus(20, 10)
+
+
+/// A discardable result function. The return value of such functions can be ignored by the compiler and not
+/// forced to be consumed.
+@discardableResult
+func myCustomAdd (_ lhs: Int, _ rhs: Int) -> Int {
+    lhs + rhs
+}
+
+myCustomAdd(20, 30)
+
+
+// Nested functions
+func doSomethingComplicated(with value: Int) -> Int {
+    func mainLogic(value: Int) -> Int {
+        value + 2
+    }
+    return mainLogic(value: value + 3)
+}
+
+doSomethingComplicated(with: 30)
+
+// Functions with default argument values
+func getFullName(firstName: String = "Foo", lastName: String = "Bar") -> String {
+    "\(firstName) \(lastName)"
+}
+
+/// Various ways to use such functions.
+/// You can pass no argument, pass one argument or pass both
+getFullName()
+getFullName(firstName: "Micah")
+getFullName(lastName: "Njeru")
+getFullName(firstName: "Micah", lastName: "Njeru")
+
+
