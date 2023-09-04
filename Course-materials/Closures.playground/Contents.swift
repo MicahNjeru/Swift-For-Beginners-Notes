@@ -59,4 +59,23 @@ ages.sorted(by: <)
 /// The reason why closures are placed as the last argument within a function is explained
 /// here: https://youtube.com/clip/Ugkxi8npCWWGJsM2UzF1_UnH3SEcsfxXAwy3?si=g8Riui5b22-_pLgY
 
+// We can also pass functions to closures.
+func add10To(_ value: Int) -> Int {
+    value + 10
+}
+
+func add20To(_ value: Int) -> Int {
+    value + 20
+}
+
+func doAddition(on value: Int, using function: (Int) -> Int) -> Int {
+    function(value)
+}
+
+doAddition(on: 20) { (value) in
+    value + 30
+}
+
+doAddition(on: 20, using: add10To(_:))
+doAddition(on: 20, using: add20To(_:))
 
