@@ -1,3 +1,5 @@
-import Cocoa
+import Foundation
 
-var greeting = "Hello, playground"
+
+// Closures are special types of functions that are passed in-line
+
