@@ -20,7 +20,7 @@ func customAdd(_ lhs: Int, _ rhs: Int, using function: (Int, Int) -> Int) -> Int
 /// which makes the closure a trailing closure. One way of satisfying this argument is to use Swift's autocomplete which removes the complex
 /// statement provided the closure's arguments are provided and it's return with their respective data types.
 
-customAdd(20, 30, using: { (lhs: Int, rhs: Int) -> Int in
+customAdd(10, 30, using: { (lhs: Int, rhs: Int) -> Int in
     lhs + rhs
     }
 )
@@ -39,5 +39,24 @@ customAdd(20, 30) { (lhs: Int, rhs: Int) -> Int in
 customAdd(30, 30) { (lhs, rhs) -> Int in
     lhs + rhs
 }
+
+/// Explanation 4: We can further "simplify/clean" the code like this:
+
+customAdd(40, 30) { $0 + $1 }
+
+// Explanation 1's code is highly recommended.
+
+// Working with Arrays
+let ages = [30, 20, 19, 40]
+ages.sorted(by: {(lhs: Int, rhs: Int) -> Bool in
+    lhs < rhs
+})
+
+// The above can be further simplified as
+// Direction of sign shows which side is lesser
+ages.sorted(by: <)
+
+/// The reason why closures are placed as the last argument within a function is explained
+/// here: https://youtube.com/clip/Ugkxi8npCWWGJsM2UzF1_UnH3SEcsfxXAwy3?si=g8Riui5b22-_pLgY
 
 
