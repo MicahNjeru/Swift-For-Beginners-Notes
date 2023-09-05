@@ -111,4 +111,32 @@ class TeslaModelY: Tesla {
     }
 }
 
+// ModelY instance
+let modelY = TeslaModelY()
+modelY.model
+modelY.year
+modelY.manufacturer
+
+// Deinitilizers
+class MyClass {
+    init(){
+        "Initilized"
+    }
+    
+    func doSomething(){
+        // something
+    }
+    
+    deinit{
+        "Deinitilized"
+    }
+}
+
+// Deinitilization example
+let myClosure = {
+    let sampleClass = MyClass()
+    sampleClass.doSomething()
+}
+
+myClosure()
 
