@@ -126,4 +126,31 @@ do {
 }
 
 // Results in Error handling
+enum IntegerErrors: Error {
+    case noPositiveIntegerBefore(thisValue: Int)
+}
+
+func getPreviousPositiveInteger(from int: Int) -> Result<Int, IntegerErrors> {
+    guard int > 0 else {
+        return Result.failure(IntegerErrors.noPositiveIntegerBefore(thisValue: int))
+    }
+    return Result.success(int - 1)
+}
+
+func performGet(forValue value: Int){
+    switch getPreviousPositiveInteger(from: value) {
+    case let .success(previousValue):
+        "Previous values is \(previousValue)"
+    case let .failure(error):
+        switch error {
+        case let .noPositiveIntegerBefore(thisValue):
+            "No positive integer before \(thisValue)"
+        }
+    }
+}
+
+
+performGet(forValue: 0)
+performGet(forValue: 2)
+
 
