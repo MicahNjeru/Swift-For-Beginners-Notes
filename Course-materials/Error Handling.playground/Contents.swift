@@ -47,7 +47,7 @@ do {
 let bar = Person(firstName: nil, lastName: nil)
 
 do {
-    let fullName = bar.getFullName()
+    let fullName = try bar.getFullName()
     fullName
 } catch Person.Errors.firstNameIsNil {
     "First name is nil"
