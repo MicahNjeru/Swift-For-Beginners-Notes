@@ -35,7 +35,7 @@ do {
     "Got an error \(error)"
 }
 
-// Using specific errors from the struct
+// Using general-specific errors from the struct
 do {
     let fullName = try foo.getFullName()
     fullName
@@ -57,6 +57,38 @@ do {
     "Both name are nill"
 } catch {
     "Some other error was thrown"
+}
+
+
+// Error handling with parameters in structs
+struct Car {
+    let manufacturer: String
+    
+    enum Errors: Error {
+        case invalidManufacturer
+    }
+    
+    init(manufacturer: String) throws {
+        if manufacturer.isEmpty {
+            throw Errors.invalidManufacturer
+        }
+        self.manufacturer = manufacturer
+    }
+}
+
+do {
+    let myCar = try Car(manufacturer: "")
+} catch Car.Errors.invalidManufacturer {
+    "Invalid manufacturer"
+} catch {
+    "Some other error"
+}
+
+// How to "optionally" call a function that throws
+if let yourCar = try? Car(manufacturer: "Tesla") {
+    "Success! Your car is \(yourCar)."
+} else {
+    "Failed to construct and error is not accessible now."
 }
 
 
