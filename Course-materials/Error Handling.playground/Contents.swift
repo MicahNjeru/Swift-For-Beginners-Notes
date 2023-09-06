@@ -91,4 +91,39 @@ if let yourCar = try? Car(manufacturer: "Tesla") {
     "Failed to construct and error is not accessible now."
 }
 
+// Re-throws: A function that internally calls another function which can also throw
+func fullName(
+    firstName: String?,
+    lastName: String?,
+    calculator: (String?, String?) throws -> String?) rethrows -> String? {
+        try calculator(firstName, lastName)
+}
+
+
+enum NameErrors: Error {
+    case firstNameIsInvalid
+    case lastNameIsInvalid
+}
+
+func + (firstName: String?, lastName: String?) throws -> String? {
+    guard let firstName, !firstName.isEmpty else {
+        throw NameErrors.firstNameIsInvalid
+    }
+    guard let lastName, !lastName.isEmpty else {
+        throw NameErrors.lastNameIsInvalid
+    }
+    return "\(firstName) \(lastName)"
+}
+
+do {
+    let fooBar = try fullName(firstName: nil, lastName: nil, calculator: +)
+} catch NameErrors.firstNameIsInvalid {
+    "Fist name is invalid"
+} catch NameErrors.lastNameIsInvalid {
+    "Last name is invalid"
+} catch let error {
+    "Some other error = \(error)"
+}
+
+// Results in Error handling
 
