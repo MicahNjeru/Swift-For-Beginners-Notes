@@ -83,3 +83,25 @@ let intsInThings = things.compactMap{(value: Any) -> Int? in
 intsInThings.count
 
 
+/// Dictionaries: These are Key: Value pairs of collections
+// Example Dictionary
+let userInfo: [String: Any] = [
+    "Name": "Foo",
+    "Age": 20,
+    "Address": [
+        "Line 1": "Address Line 1",
+        "Postcode": "12345"
+    ]
+]
+
+userInfo["Name"]
+userInfo["Age"]
+userInfo["Address"]
+
+
+userInfo.keys
+userInfo.values
+for (key, value) in userInfo {
+    print("\(key): \(value)")
+}
+
