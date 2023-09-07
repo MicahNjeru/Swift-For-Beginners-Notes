@@ -36,5 +36,50 @@ numbers.filter { (value: Int) -> Bool in
     value >= 3
 }
 
+// Compact mapping: combination of map and filter and returns an optional
+numbers.compactMap{ (value: Int) -> String? in
+    value % 2 == 0 ? String(value) : nil
+}
+
+// Arrays can also contain nil
+let numbers2: [Int?] = [1, 2, nil, 4, 5]
+numbers2.count
+
+// Filtering nil from array. We use compactMap
+let filtered = numbers2.compactMap { (value: Int?) -> Bool in
+    value != nil
+}
+
+// Arrays can have more than 1 data type
+// Although you have to mark the array as "Any" as it's data type
+let things: [Any] = [1, "Hello", 2, "World"]
+
+things.count
+
+/// Sets: Special collection that contains only UNIQUE values
+/// It checks the uniqueness by comparing the hash values and equalities
+/// Set's also do not guarantee ordering.
+/// They can contain nil
+
+let unique = Set([1, 2, 3, 2, 1, 3])
+unique.count
+unique.map(-)
+
+let myNumbers = Set([1, 2, 3, 4, 5, nil])
+let notNilNumbers = Set(myNumbers.compactMap{
+    $0
+})
+
+notNilNumbers
+
+// Sets can have more than 1 data type
+let stuff: Set<AnyHashable> = [1, 2, 3, "Micah"]
+stuff.count
+
+// Grabbing values with specific data types
+let intsInThings = things.compactMap{(value: Any) -> Int? in
+    value as? Int
+}
+intsInThings.count
 
 
