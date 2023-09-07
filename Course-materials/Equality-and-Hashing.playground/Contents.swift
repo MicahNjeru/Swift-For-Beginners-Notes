@@ -29,6 +29,7 @@ if foo == foo2 {
 
 
 /// Hashable: Similar to equitable
+/// Enums, BY DEFAULT, are hashable
 struct House: Hashable {
     let number: Int
     let number0fBedrooms: Int
