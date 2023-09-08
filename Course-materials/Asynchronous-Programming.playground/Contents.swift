@@ -8,6 +8,7 @@ PlaygroundPage
     .needsIndefiniteExecution = true
 
 // Asynchronous Programming: it will not immediately return its result or not return a result
+// Asynchronous code only runs in async functions and Tasks
 func calculateFullName (firstName: String, lastName: String) async -> String {
     try? await Task.sleep(for: .seconds(1))
     return "\(firstName) \(lastName)"
