@@ -21,6 +21,21 @@ func + (lhs: String?, rhs:String?) -> String? {
 }
 
 // Unary prefix operator
+prefix operator ^
+prefix func ^ (value: String) -> String {
+    value.uppercased()
+}
 let lowerCaseName = "Foo Bar"
+let upperCaseName = ^lowerCaseName
+
+
+// Unary postfix operator
+postfix operator *
+postfix func *(value: String) -> String {
+    "*** \(value) ***"
+}
+
+let withStars = lowerCaseName*
+
 
 
